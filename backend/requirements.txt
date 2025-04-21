@@ -1,7 +1,7 @@
 absl-py==1.4.0
 accelerate==0.34.2
 acpype==2023.10.27
-aiobotocore @ file:///croot/aiobotocore_1701291493089/work
+aiobotocore
 aiofiles==23.2.1
 aiohttp @ file:///croot/aiohttp_1707342283163/work
 aioitertools @ file:///tmp/build/80754af9/aioitertools_1607109665762/work
