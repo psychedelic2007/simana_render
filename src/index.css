@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 270 50% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 50% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 50% 20%;
+
+    --primary: 270 80% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 20% 96%;
+    --secondary-foreground: 270 50% 20%;
+
+    --muted: 270 20% 96%;
+    --muted-foreground: 270 50% 40%;
+
+    --accent: 270 50% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 90%;
+    --input: 270 20% 90%;
+    --ring: 270 80% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 270 50% 20%;
+    --sidebar-primary: 270 50% 20%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 20% 96%;
+    --sidebar-accent-foreground: 270 50% 20%;
+    --sidebar-border: 270 20% 90%;
+    --sidebar-ring: 270 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl font-bold md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl font-semibold md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl font-semibold md:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl font-medium md:text-2xl;
+  }
+
+  /* Glass morphism styles */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+  
+  /* Page transition */
+  .page-transition-enter {
+    @apply opacity-0;
+  }
+  
+  .page-transition-enter-active {
+    @apply opacity-100 transition-opacity duration-300;
+  }
+  
+  .page-transition-exit {
+    @apply opacity-100;
+  }
+  
+  .page-transition-exit-active {
+    @apply opacity-0 transition-opacity duration-300;
+  }
+  
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-simana-blue text-white px-6 py-3 rounded-md font-medium transition-all duration-300 
+           hover:shadow-hover hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-simana-blue focus:ring-opacity-50;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-foreground px-6 py-3 rounded-md font-medium transition-all duration-300 
+           hover:bg-secondary/80 hover:shadow-subtle focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50;
+  }
+  
+  /* Pill tag style */
+  .pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-simana-lightBlue text-simana-blue;
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-hover hover:translate-y-[-2px];
+  }
+}
