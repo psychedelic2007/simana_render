@@ -9,7 +9,6 @@ aiosignal
 alabaster
 alembic==1.13.3
 altai
-anaconda-anon-usage
 anaconda-catalogs
 anaconda-client
 anaconda-cloud-auth
