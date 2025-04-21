@@ -9,11 +9,6 @@ aiosignal
 alabaster
 alembic==1.13.3
 altai
-anaconda-catalogs
-anaconda-client
-anaconda-cloud-auth
-anaconda-navigator
-anaconda-project
 annotated-types==0.7.0
 anyio==3.7.1
 appdirs==1.4.4
