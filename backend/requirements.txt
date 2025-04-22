@@ -2,7 +2,6 @@ Bio==1.7.1
 biopython==1.83
 fastapi==0.115.12
 matplotlib==3.8.3
-MDAnalysis==2.6.1
 MDAnalysis==2.9.0
 numpy==1.25.2
 opencv_python==4.11.0.86
