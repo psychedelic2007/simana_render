@@ -62,7 +62,7 @@ export const calculateContactMap = async (
       }
     }
 
-    const response = await fetch(`${API_URL}/contact_map`, {
+    const response = await fetch(`${API_URL}/contact`, {
       method: 'POST',
       body: formData,
     });
