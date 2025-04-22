@@ -6,7 +6,7 @@ MDAnalysis==2.9.0
 numpy==1.25.2
 opencv_python==4.11.0.86
 pandas==2.0.3
-RamachanDraw==1.0.1
+ramachandraw
 rdkit==2023.9.5
 rdkit_pypi==2022.9.5
 scikit_learn==1.3.0
@@ -14,3 +14,4 @@ scipy==1.15.2
 seaborn==0.13.2
 umap_learn==0.5.4
 uvicorn==0.25.0
+python-multipart==0.0.7
