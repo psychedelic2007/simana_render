@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 interface CurvePlotCustomizations {
@@ -45,8 +44,11 @@ interface BFactorResult {
   error?: string;
 }
 
+// Environment-based API URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 export const analyzeBFactor = async (
-  pdbFile: File, 
+  pdbFile: File,
   showStdDev: boolean,
   curvePlotCustomizations: CurvePlotCustomizations,
   distPlotCustomizations: DistPlotCustomizations,
@@ -55,8 +57,8 @@ export const analyzeBFactor = async (
   const formData = new FormData();
   formData.append('pdb_file', pdbFile);
   formData.append('show_std_dev', showStdDev.toString());
-  
-  // Add curve plot customizations
+
+  // Curve plot customizations
   formData.append('curve_x_label', curvePlotCustomizations.xLabel);
   formData.append('curve_y_label', curvePlotCustomizations.yLabel);
   formData.append('curve_x_label_size', curvePlotCustomizations.xLabelSize.toString());
@@ -66,21 +68,13 @@ export const analyzeBFactor = async (
   formData.append('curve_y_tick_gap', curvePlotCustomizations.yTickGap.toString());
   formData.append('curve_linewidth', curvePlotCustomizations.lineWidth.toString());
   formData.append('curve_x_tick_rotation', curvePlotCustomizations.xTickRotation.toString());
-  
-  if (curvePlotCustomizations.xMin !== null) {
-    formData.append('curve_x_min', curvePlotCustomizations.xMin.toString());
-  }
-  if (curvePlotCustomizations.xMax !== null) {
-    formData.append('curve_x_max', curvePlotCustomizations.xMax.toString());
-  }
-  if (curvePlotCustomizations.yMin !== null) {
-    formData.append('curve_y_min', curvePlotCustomizations.yMin.toString());
-  }
-  if (curvePlotCustomizations.yMax !== null) {
-    formData.append('curve_y_max', curvePlotCustomizations.yMax.toString());
-  }
-  
-  // Add distribution plot customizations
+
+  if (curvePlotCustomizations.xMin !== null) formData.append('curve_x_min', curvePlotCustomizations.xMin.toString());
+  if (curvePlotCustomizations.xMax !== null) formData.append('curve_x_max', curvePlotCustomizations.xMax.toString());
+  if (curvePlotCustomizations.yMin !== null) formData.append('curve_y_min', curvePlotCustomizations.yMin.toString());
+  if (curvePlotCustomizations.yMax !== null) formData.append('curve_y_max', curvePlotCustomizations.yMax.toString());
+
+  // Distribution plot customizations
   formData.append('dist_x_label', distPlotCustomizations.xLabel);
   formData.append('dist_y_label', distPlotCustomizations.yLabel);
   formData.append('dist_x_label_size', distPlotCustomizations.xLabelSize.toString());
@@ -90,25 +84,17 @@ export const analyzeBFactor = async (
   formData.append('dist_y_tick_gap', distPlotCustomizations.yTickGap.toString());
   formData.append('dist_x_tick_rotation', distPlotCustomizations.xTickRotation.toString());
   formData.append('dist_alpha', distPlotCustomizations.alpha.toString());
-  
-  if (distPlotCustomizations.xMin !== null) {
-    formData.append('dist_x_min', distPlotCustomizations.xMin.toString());
-  }
-  if (distPlotCustomizations.xMax !== null) {
-    formData.append('dist_x_max', distPlotCustomizations.xMax.toString());
-  }
-  if (distPlotCustomizations.yMin !== null) {
-    formData.append('dist_y_min', distPlotCustomizations.yMin.toString());
-  }
-  if (distPlotCustomizations.yMax !== null) {
-    formData.append('dist_y_max', distPlotCustomizations.yMax.toString());
-  }
-  
+
+  if (distPlotCustomizations.xMin !== null) formData.append('dist_x_min', distPlotCustomizations.xMin.toString());
+  if (distPlotCustomizations.xMax !== null) formData.append('dist_x_max', distPlotCustomizations.xMax.toString());
+  if (distPlotCustomizations.yMin !== null) formData.append('dist_y_min', distPlotCustomizations.yMin.toString());
+  if (distPlotCustomizations.yMax !== null) formData.append('dist_y_max', distPlotCustomizations.yMax.toString());
+
   formData.append('dpi', dpi.toString());
-  
+
   try {
     const response = await axios.post<BFactorResult>(
-      'http://localhost:8000/api/bfactor',
+      `${API_BASE_URL}/bfactor`,
       formData,
       {
         headers: {
@@ -120,34 +106,34 @@ export const analyzeBFactor = async (
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       console.error('API Error:', error.response.data);
-      return { 
-        curve_plot: '', 
-        dist_plot: '', 
-        residue_data: [], 
+      return {
+        curve_plot: '',
+        dist_plot: '',
+        residue_data: [],
         residue_count: 0,
-        error: error.response.data.detail || 'An error occurred while processing the request' 
+        error: error.response.data.detail || 'An error occurred while processing the request',
       };
     }
     console.error('Request Error:', error);
-    return { 
-      curve_plot: '', 
-      dist_plot: '', 
-      residue_data: [], 
+    return {
+      curve_plot: '',
+      dist_plot: '',
+      residue_data: [],
       residue_count: 0,
-      error: 'An error occurred while connecting to the server' 
+      error: 'An error occurred while connecting to the server',
     };
   }
 };
 
-export const downloadCSV = (data: Array<{residue: number; mean_bfactor: number; std_bfactor: number}>) => {
-  // Create CSV content
+export const downloadCSV = (
+  data: Array<{ residue: number; mean_bfactor: number; std_bfactor: number }>
+) => {
   const headers = ['Residue', 'Mean B-factor', 'Std B-factor'];
   const csvContent = [
     headers.join(','),
-    ...data.map(row => `${row.residue},${row.mean_bfactor},${row.std_bfactor}`)
+    ...data.map(row => `${row.residue},${row.mean_bfactor},${row.std_bfactor}`),
   ].join('\n');
-  
-  // Create download link
+
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
