@@ -43,7 +43,7 @@ export const analyzeSmiles = async (
     formData.append('title_fontsize', customizations.titleFontSize.toString());
     formData.append('dpi', customizations.dpi.toString());
 
-    const response = await fetch(`${API_URL}/boiled_egg`, {
+    const response = await fetch(`${API_URL}/boiled`, {
       method: 'POST',
       body: formData,
     });
