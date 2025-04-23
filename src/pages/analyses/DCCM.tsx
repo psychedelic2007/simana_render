@@ -50,32 +50,6 @@ const generateDCCM = async (
     formData.append('title', customizations.title);
     formData.append('colorbar_label', customizations.colorbarLabel);
     formData.append('dpi', customizations.dpi.toString());
-    
-    const response = await fetch('http://localhost:8000/api/dccm', {
-      method: 'POST',
-      body: formData
-    });
-    
-    if (!response.ok) {
-      throw new Error(`API responded with status: ${response.status}`);
-    }
-    
-    const data = await response.json();
-    
-    if (data.error) {
-      throw new Error(data.error);
-    }
-    
-    return {
-      plotUrl: data.plot,
-      matrix: data.matrix || [],
-      residueLabels: data.residue_labels || [],
-      statistics: data.statistics || {}
-    };
-  } catch (error) {
-    console.error('Error generating DCCM:', error);
-    throw error;
-  }
 };
 
 const DCCMAnalysis: React.FC = () => {
