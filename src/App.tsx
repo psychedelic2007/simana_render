@@ -18,7 +18,7 @@ import RMSDAnalysis from "./pages/analyses/RMSD";
 import RMSFAnalysis from "./pages/analyses/RMSF";
 import RoGAnalysis from "./pages/analyses/RoG";
 import SASAAnalysis from "./pages/analyses/SASA";
-import { DCCMAnalysis } from "./pages/analyses/DCCM";
+import DCCMAnalysis from "./pages/analyses/DCCM";
 import RamaAnalysis from "./pages/analyses/Rama";
 import ContactMapAnalysis from "./pages/analyses/ContactMap";
 import BFactorAnalysis from "./pages/analyses/BFactor";
