@@ -31,7 +31,7 @@ export const calculatePairwiseSimilarity = async (
     
     console.log("Calculating pairwise similarity for:", { smiles1, smiles2 });
     
-    const response = await fetch('http://localhost:8000/api/tanimoto', {
+    const response = await fetch('https://simana.onrender.com/api/tanimoto', {
       method: 'POST',
       body: formData,
     });
