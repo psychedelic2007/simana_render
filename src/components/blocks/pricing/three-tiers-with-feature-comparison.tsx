@@ -245,7 +245,7 @@ export default function ThreeTiersWithFeatureComparison() {
                                 >
                                   <dt className="pr-4 text-gray-600">{feature.name}</dt>
                                   <dd className="flex items-center justify-end sm:justify-center sm:px-4">
-                                    {typeof feature.tiers[tier.name] === 'string' ? (
+                                    {typeof feature.tiers[tier.name as keyof typeof feature.tiers] === 'string' ? (
                                       <span
                                         className={tier.featured ? 'font-semibold text-indigo-600' : 'text-gray-900'}
                                       >
