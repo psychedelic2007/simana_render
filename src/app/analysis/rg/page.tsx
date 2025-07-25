@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import dynamic from 'next/dynamic';
 import { parseXVGContent, calculateDistribution, alphaToHex } from '@/utils/xvgParser';
 
-const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
+const Plot = dynamic(() => import('@/components/PlotlyWrapper'), { ssr: false });
 
 const RoGAnalysis = () => {
   const router = useRouter();
@@ -266,7 +266,7 @@ const RoGAnalysis = () => {
           <Button 
             variant="ghost" 
             className="mb-4" 
-            onClick={() => navigate('/analysis')}
+            onClick={() => router.push('/analysis')}
           >
             <ArrowLeft className="mr-2" size={16} />
             Back to Analysis Tools
