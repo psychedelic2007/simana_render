@@ -346,7 +346,7 @@ const SASAAnalysis = () => {
           <Button 
             variant="ghost" 
             className="mb-4" 
-            onClick={() => navigate('/analysis')}
+            onClick={() => router.push('/analysis')}
           >
             <ArrowLeft className="mr-2" size={16} />
             Back to Analysis Tools
