@@ -255,17 +255,8 @@ export default function ThreeTiersWithFeatureComparison() {
                                       <>
                                         type TierName = 'Starter' | 'Growth' | 'Scale';
                                         
-                                        // Check if the tiers object contains boolean values
-                                        const isBooleanTiers = (tiers: any): tiers is Record<TierName, boolean> => {
-                                          return typeof Object.values(tiers)[0] === 'boolean';
-                                        };
-                                        
-                                        // Then use it:
-                                        {isBooleanTiers(feature.tiers) && feature.tiers[tier.name as TierName] === true ? (
+                                        {(feature.tiers as Record<TierName, boolean | string>)[tier.name as TierName] === true ? (
                                           <CheckIcon aria-hidden="true" className="mx-auto size-5 text-indigo-600" />
-                                        ) : !isBooleanTiers(feature.tiers) ? (
-                                          // Handle string case - display the string value
-                                          <span className="text-sm">{feature.tiers[tier.name as TierName]}</span>
                                         ) : (
                                           <XMarkIcon aria-hidden="true" className="mx-auto size-5 text-gray-400" />
                                         )}
