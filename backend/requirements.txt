@@ -4,3 +4,4 @@ python-multipart
 rdkit
 matplotlib
 numpy
+seaborn
