@@ -13,7 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import dynamic from 'next/dynamic';
 import { parseXVGContent, calculateDistribution, alphaToHex } from '@/utils/xvgParser';
 
-const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
+const Plot = dynamic(() => import('@/components/PlotlyWrapper'), { ssr: false });
 
 const RoGAnalysis = () => {
   const navigate = useNavigate();
