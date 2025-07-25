@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, AnimationProps, motion } from "motion/react";
+import { AnimatePresence, MotionProps, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 const FlippingText = ({
@@ -110,7 +110,7 @@ const FlippingText = ({
   );
 };
 
-export function TextAnimationFlippingWords() {
+export function TextFlippingWords() {
   const words = ["Next.js", "Tailwind CSS", "Motion", "Typescript", "Web GL"];
 
   return (
@@ -143,12 +143,12 @@ export function TextAnimationFlippingWords() {
             },
             {
               title: "Performance Tips",
-              description: "Optimize your animations for smooth rendering",
+              description: "Optimize your s for smooth rendering",
               icon: "⚙️",
             },
             {
-              title: "Animation Library",
-              description: "Browse our collection of pre-built animations",
+              title: " Library",
+              description: "Browse our collection of pre-built s",
               icon: "📚",
             },
             {
