@@ -252,10 +252,8 @@ export default function ThreeTiersWithFeatureComparison() {
                                         {feature.tiers[tier.name as keyof typeof feature.tiers]}
                                       </span>
                                     ) : (
-                                      <>
-                                        type TierName = 'Starter' | 'Growth' | 'Scale';
-                                        
-                                        {(feature.tiers as Record<TierName, boolean | string>)[tier.name as TierName] === true ? (
+                                      <> 
+                                        {(feature.tiers as Record<'Starter' | 'Growth' | 'Scale', boolean | string>)[tier.name as 'Starter' | 'Growth' | 'Scale'] === true ? (
                                           <CheckIcon aria-hidden="true" className="mx-auto size-5 text-indigo-600" />
                                         ) : (
                                           <XMarkIcon aria-hidden="true" className="mx-auto size-5 text-gray-400" />
