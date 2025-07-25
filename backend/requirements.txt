@@ -1,7 +1,28 @@
-fastapi
-uvicorn
-python-multipart 
-rdkit
-matplotlib
-numpy
-seaborn
+fastapi==0.104.1
+uvicorn==0.23.2
+matplotlib==3.8.3
+numpy==1.25.2
+python-multipart==0.0.6
+ramachandraw==1.0.1
+MDAnalysis==2.6.1
+biopython==1.83
+seaborn==0.13.1
+rdkit-pypi==2022.9.5
+scikit-learn==1.3.0
+umap-learn==0.5.4
+# Option 1: Keep TensorFlow and use an older JAX version
+#tensorflow==2.16.1
+#jax==0.4.20
+# Option 2: Keep JAX and use TensorFlow 2.17.0 (which supports newer ml-dtypes)
+tensorflow==2.17.0
+jax==0.5.3
+pandas>=1.5.0
+scipy>=1.7.0
+torch>=2.0.0
+torchvision>=0.15.0
+pillow>=9.0.0
+opencv-python>=4.5.0
+h5py>=3.6.0
+tqdm>=4.62.0
+requests>=2.27.0
+pyyaml>=6.0
