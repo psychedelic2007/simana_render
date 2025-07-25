@@ -11,7 +11,7 @@ import dynamic from 'next/dynamic';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { parseXVGContent, calculateDistribution, alphaToHex } from '@/utils/xvgParser';
 
-const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
+const Plot = dynamic(() => import('@/components/PlotlyWrapper'), { ssr: false });
 
 const RMSFAnalysis = () => {
   const [files, setFiles] = useState<File[]>([]);
