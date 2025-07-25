@@ -120,7 +120,10 @@ const TanimotoAnalysis = () => {
         input = smilesArray;
       }
 
-      const result = await calculateMatrixSimilarity(input, selectedColorScheme);
+      const result = await calculateMatrixSimilarity(input, {
+        colorScheme: selectedColorScheme,
+        dpi: 300
+      });
       setMatrixResult(result);
       
       toast({
