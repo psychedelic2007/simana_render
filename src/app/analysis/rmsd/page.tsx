@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import { alphaToHex } from '@/utils/xvgParser';
 
 // Dynamically import Plot to avoid SSR issues
-const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
+const Plot = dynamic(() => import('@/components/PlotlyWrapper'), { ssr: false });
 
 const RMSDAnalysis = () => {
   const router = useRouter();
