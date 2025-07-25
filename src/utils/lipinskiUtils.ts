@@ -57,7 +57,7 @@ export const analyzeLipinskiCompounds = async (
       }
     }
     
-    const response = await fetch('http://localhost:8000/api/lipinski', {
+    const response = await fetch('https://simana.onrender.com/api/lipinski', {
       method: 'POST',
       body: formData,
     });
