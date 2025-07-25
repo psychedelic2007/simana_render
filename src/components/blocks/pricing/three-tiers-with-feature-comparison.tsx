@@ -253,7 +253,9 @@ export default function ThreeTiersWithFeatureComparison() {
                                       </span>
                                     ) : (
                                       <>
-                                        {feature.tiers[tier.name] === true ? (
+                                        type TierName = 'Starter' | 'Growth' | 'Scale';
+                                        
+                                        {feature.tiers[tier.name as TierName] === true ? (
                                           <CheckIcon aria-hidden="true" className="mx-auto size-5 text-indigo-600" />
                                         ) : (
                                           <XMarkIcon aria-hidden="true" className="mx-auto size-5 text-gray-400" />
