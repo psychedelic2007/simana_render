@@ -57,10 +57,6 @@ export function ExpandableCardOnClick() {
 
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useOutsideClick(ref, () => {
-    setActive(null);
-  });
-
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
