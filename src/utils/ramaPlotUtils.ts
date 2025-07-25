@@ -33,7 +33,7 @@ export const generateRamachandranData = async (
       console.log(`${key}: ${value}`);
     }
     
-    const response = await fetch('http://localhost:8000/api/ramachandran/', {
+    const response = await fetch('https://simana.onrender.com/api/ramachandran/', {
       method: 'POST',
       body: formData,
     });
