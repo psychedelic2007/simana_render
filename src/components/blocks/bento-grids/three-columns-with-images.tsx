@@ -151,7 +151,7 @@ const CardTitle = ({
   return (
     <motion.h3
       variants={variants}
-      transition={{ type: "easeOut", duration: 0.2 }}
+      transition={{ type: "tween", ease: "easeOut", duration: 0.2 }}
       className={cn(
         "font-sans text-base font-medium tracking-tight text-neutral-700 dark:text-neutral-100",
         className
