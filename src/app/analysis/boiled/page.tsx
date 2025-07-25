@@ -70,7 +70,7 @@ const analyzeSmiles = async (
     console.log('FormData created, sending to backend...');
     console.log('FormData SMILES value:', formData.get('smiles'));
     
-    const response = await fetch('http://localhost:8000/api/boiled', {
+    const response = await fetch('https://simana.onrender.com/api/boiled', {
       method: 'POST',
       body: formData,
     });
@@ -249,14 +249,6 @@ const BoiledEggAnalysis: React.FC = () => {
                       onClick={() => setSmiles(defaultSmiles)}
                     >
                       Load Examples
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-xs"
-                      onClick={() => setSmiles(testSmiles)}
-                    >
-                      Load Test SMILES
                     </Button>
                   </div>
                 </div>
