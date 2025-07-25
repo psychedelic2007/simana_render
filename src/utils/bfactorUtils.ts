@@ -106,7 +106,7 @@ export const analyzeBFactor = async (
     
     console.log('Sending request to backend...');
     
-    const response = await fetch('http://localhost:8000/api/bfactor', {
+    const response = await fetch('http://simana.onrender.com/api/bfactor', {
       method: 'POST',
       body: formData,
     });
