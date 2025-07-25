@@ -14,7 +14,7 @@ import { parseXVGContent, calculateDistribution, alphaToHex } from '@/utils/xvgP
 const Plot = dynamic(() => import('@/components/PlotlyWrapper'), { ssr: false });
 
 const RoGAnalysis = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
   const [labels, setLabels] = useState<string[]>([]);
   const [fileCount, setFileCount] = useState(1);
@@ -266,7 +266,7 @@ const RoGAnalysis = () => {
           <Button 
             variant="ghost" 
             className="mb-4" 
-            onClick={() => navigate('/analysis')}
+            onClick={() => router.push('/analysis')}
           >
             <ArrowLeft className="mr-2" size={16} />
             Back to Analysis Tools
