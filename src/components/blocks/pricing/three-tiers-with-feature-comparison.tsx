@@ -249,7 +249,7 @@ export default function ThreeTiersWithFeatureComparison() {
                                       <span
                                         className={tier.featured ? 'font-semibold text-indigo-600' : 'text-gray-900'}
                                       >
-                                        {feature.tiers[tier.name]}
+                                        {feature.tiers[tier.name as keyof typeof feature.tiers]}
                                       </span>
                                     ) : (
                                       <>
