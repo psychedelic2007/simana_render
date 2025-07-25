@@ -34,7 +34,7 @@ export const calculateDCCM = async (
       }
     }
     
-    const response = await fetch('http://localhost:8000/api/dccm/', {
+    const response = await fetch('https://simana.onrender.com/api/dccm/', {
       method: 'POST',
       body: formData,
     });
