@@ -57,7 +57,7 @@ export const calculateContactMap = async (
       }
     }
     
-    const response = await fetch('http://localhost:8000/api/contact_map/', {
+    const response = await fetch('https://simana.onrender.com/api/contact_map/', {
       method: 'POST',
       body: formData,
     });
