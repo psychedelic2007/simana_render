@@ -34,7 +34,7 @@ export const analyzeSmiles = async (
     formData.append('title_fontsize', customizations.titleFontSize.toString());
     formData.append('dpi', customizations.dpi.toString());
     
-    const response = await fetch('http://localhost:8000/api/boiled', {
+    const response = await fetch('https://simana.onrender.com/api/boiled', {
       method: 'POST',
       body: formData,
     });
