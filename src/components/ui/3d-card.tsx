@@ -95,22 +95,8 @@ export const CardBody = ({
   );
 };
 
-// Fixed CardItem component with proper typing
-export const CardItem = forwardRef<
-  HTMLElement,
-  {
-    as?: React.ElementType;
-    children: React.ReactNode;
-    className?: string;
-    translateX?: number | string;
-    translateY?: number | string;
-    translateZ?: number | string;
-    rotateX?: number | string;
-    rotateY?: number | string;
-    rotateZ?: number | string;
-  } & React.HTMLAttributes<HTMLElement>
->(({
-  as: Component = "div",
+// Simplified CardItem component - removes polymorphic complexity entirely
+export const CardItem = ({
   children,
   className,
   translateX = 0,
@@ -120,8 +106,18 @@ export const CardItem = forwardRef<
   rotateY = 0,
   rotateZ = 0,
   ...rest
-}, forwardedRef) => {
-  const ref = useRef<HTMLElement>(null);
+}: {
+  children: React.ReactNode;
+  className?: string;
+  translateX?: number | string;
+  translateY?: number | string;
+  translateZ?: number | string;
+  rotateX?: number | string;
+  rotateY?: number | string;
+  rotateZ?: number | string;
+  [key: string]: any;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered] = useMouseEnter();
 
   useEffect(() => {
@@ -138,17 +134,15 @@ export const CardItem = forwardRef<
   };
 
   return (
-    <Component
-      ref={forwardedRef || ref}
+    <div
+      ref={ref}
       className={cn("w-fit transition duration-200 ease-linear", className)}
       {...rest}
     >
       {children}
-    </Component>
+    </div>
   );
-});
-
-CardItem.displayName = "CardItem";
+};
 
 // Create a hook to use the context
 export const useMouseEnter = () => {
