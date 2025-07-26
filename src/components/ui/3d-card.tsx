@@ -1,13 +1,12 @@
 "use client";
-
 import { cn } from "@/lib/utils";
-
 import React, {
   createContext,
   useState,
   useContext,
   useRef,
   useEffect,
+  forwardRef,
 } from "react";
 
 const MouseEnterContext = createContext<
@@ -45,6 +44,7 @@ export const CardContainer = ({
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
   };
+
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
@@ -95,8 +95,22 @@ export const CardBody = ({
   );
 };
 
-export const CardItem = ({
-  as: Tag = "div",
+// Fixed CardItem component with proper typing
+export const CardItem = forwardRef<
+  HTMLElement,
+  {
+    as?: React.ElementType;
+    children: React.ReactNode;
+    className?: string;
+    translateX?: number | string;
+    translateY?: number | string;
+    translateZ?: number | string;
+    rotateX?: number | string;
+    rotateY?: number | string;
+    rotateZ?: number | string;
+  } & React.HTMLAttributes<HTMLElement>
+>(({
+  as: Component = "div",
   children,
   className,
   translateX = 0,
@@ -106,19 +120,8 @@ export const CardItem = ({
   rotateY = 0,
   rotateZ = 0,
   ...rest
-}: {
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  translateX?: number | string;
-  translateY?: number | string;
-  translateZ?: number | string;
-  rotateX?: number | string;
-  rotateY?: number | string;
-  rotateZ?: number | string;
-  [key: string]: any;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
+}, forwardedRef) => {
+  const ref = useRef<HTMLElement>(null);
   const [isMouseEntered] = useMouseEnter();
 
   useEffect(() => {
@@ -135,15 +138,17 @@ export const CardItem = ({
   };
 
   return (
-    <Tag
-      ref={ref}
+    <Component
+      ref={forwardedRef || ref}
       className={cn("w-fit transition duration-200 ease-linear", className)}
       {...rest}
     >
       {children}
-    </Tag>
+    </Component>
   );
-};
+});
+
+CardItem.displayName = "CardItem";
 
 // Create a hook to use the context
 export const useMouseEnter = () => {
@@ -153,4 +158,3 @@ export const useMouseEnter = () => {
   }
   return context;
 };
-
