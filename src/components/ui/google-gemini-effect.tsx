@@ -5,7 +5,7 @@ import React from "react";
 
 const transition = {
   duration: 0,
-  ease: "linear",
+  ease: "easeInOut",
 };
 
 export const GoogleGeminiEffect = ({
