@@ -1,4 +1,5 @@
 "use client";
+import dynamic from 'next/dynamic';
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Upload, Download, Settings, RefreshCw, FileSpreadsheet } from 'lucide-react';
@@ -8,11 +9,13 @@ import { Input } from '@/components/ui/input';
 import FileUpload from '@/components/FileUpload';
 import { toast } from '@/hooks/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Plot from 'react-plotly.js';
 import { parseXVGContent, calculateDistribution, alphaToHex, hexToRgba } from '@/utils/xvgParser';
 
 // Dynamically import Plot to avoid SSR issues
-const Plot = dynamic(() => import('@/components/PlotlyWrapper'), { ssr: false });
+const Plot = dynamic(() => import('react-plotly.js'), { 
+  ssr: false,
+  loading: () => <div>Loading chart...</div>
+});
 
 const SASAAnalysis = () => {
   const router = useRouter();
