@@ -48,7 +48,7 @@ const Text = ({
   children: string;
   className?: string;
   delay?: number;
-} & MotionProps) => {
+} & HTMLMotionProps<"p">) => {
   return (
     <motion.p
       {...animationProps}
