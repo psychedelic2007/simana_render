@@ -33,7 +33,15 @@ export const ToastViewport: React.FC<{ className?: string }> = ({ className }) =
   )
 }
 
-export const Toast: React.FC<ToastProps> = ({ className, variant = "default", ...props }) => {
+export const Toast: React.FC<ToastProps> = ({ 
+  className, 
+  variant = "default", 
+  id,
+  title,
+  description,
+  action,
+  ...htmlProps 
+}) => {
   const baseStyles = "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border p-6 pr-8 shadow-lg"
   const variantStyles = {
     default: "border bg-white text-black dark:bg-gray-800 dark:text-white",
@@ -42,9 +50,15 @@ export const Toast: React.FC<ToastProps> = ({ className, variant = "default", ..
   
   return (
     <div
+      id={id}
       className={cn(baseStyles, variantStyles[variant], className)}
-      {...props}
-    />
+      {...htmlProps}
+    >
+      {title && <ToastTitle>{title}</ToastTitle>}
+      {description && <ToastDescription>{description}</ToastDescription>}
+      {action}
+      <ToastClose />
+    </div>
   )
 }
 
