@@ -49,14 +49,6 @@ interface MobileNavMenuProps {
   onClose: () => void;
 }
 
-interface NavbarButtonProps {
-  href?: string;
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  variant?: "primary" | "secondary" | "dark" | "gradient";
-}
-
 export const Navbar = ({ children, className }: NavbarProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll({
@@ -257,12 +249,19 @@ export const NavbarLogo = () => {
 
 export const NavbarButton = ({
   href,
-  as: Tag = "a",
+  as,
   children,
   className,
   variant = "primary",
   ...props
-}: NavbarButtonProps & Record<string, any>) => {
+}: {
+  href?: string;
+  as?: "a" | "button";
+  children: React.ReactNode;
+  className?: string;
+  variant?: "primary" | "secondary" | "dark" | "gradient";
+  [key: string]: any;
+}) => {
   const baseStyles =
     "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
@@ -275,13 +274,26 @@ export const NavbarButton = ({
       "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
+  const combinedClassName = cn(baseStyles, variantStyles[variant], className);
+
+  if (as === "button") {
+    return (
+      <button
+        className={combinedClassName}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+
   return (
-    <Tag
-      href={href || undefined}
-      className={cn(baseStyles, variantStyles[variant], className)}
+    <a
+      href={href}
+      className={combinedClassName}
       {...props}
     >
       {children}
-    </Tag>
+    </a>
   );
 };
