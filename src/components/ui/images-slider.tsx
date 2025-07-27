@@ -95,21 +95,23 @@ export const ImagesSlider = ({
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: [0.645, 0.045, 0.355, 1.0],
+        ease: "easeOut",
       },
     },
     upExit: {
-      opacity: 1,
+      opacity: 0,
       y: "-150%",
       transition: {
         duration: 1,
+        ease: "easeInOut",
       },
     },
     downExit: {
-      opacity: 1,
+      opacity: 0,
       y: "150%",
       transition: {
         duration: 1,
+        ease: "easeInOut",
       },
     },
   };
