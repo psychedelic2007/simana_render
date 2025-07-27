@@ -11,6 +11,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Plot from 'react-plotly.js';
 import { parseXVGContent, calculateDistribution, alphaToHex, hexToRgba } from '@/utils/xvgParser';
 
+// Dynamically import Plot to avoid SSR issues
+const Plot = dynamic(() => import('@/components/PlotlyWrapper'), { ssr: false });
+
 const SASAAnalysis = () => {
   const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
