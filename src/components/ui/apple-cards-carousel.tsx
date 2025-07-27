@@ -120,8 +120,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   transition: {
                     duration: 0.5,
                     delay: 0.2 * index,
-                    ease: "easeOut",
-                    once: true,
+                    ease: "easeOut"
                   },
                 }}
                 key={"card" + index}
