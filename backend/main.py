@@ -37,7 +37,12 @@ router = APIRouter()
 # Allow CORS for local development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://simana-render.onrender.com", "http://localhost:8000"],
+    allow_origins=[
+        "https://simana-render.onrender.com",  # Add your actual frontend domain
+        "https://simana.onrender.com", 
+        "http://localhost:3000",  # For local development
+        "http://localhost:8000"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
