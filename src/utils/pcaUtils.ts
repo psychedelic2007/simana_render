@@ -51,7 +51,7 @@ export const performDimensionalityReduction = async (
     formData.append('comp2', options.comp2.toString());
     formData.append('dpi', options.dpi.toString());
     
-    const response = await fetch('https://simana.onrender.com/api/pca', {
+    const response = await fetch('/api/pca', {
       method: 'POST',
       body: formData,
     });
