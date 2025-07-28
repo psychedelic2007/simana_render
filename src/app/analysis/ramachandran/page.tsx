@@ -15,7 +15,7 @@ import {
 import FileUpload from '@/components/FileUpload';
 import { toast } from '@/hooks/use-toast';
 
-const BACKEND_URL = 'http://localhost:8000';
+const BACKEND_URL = 'https://simana.onrender.com';
 
 const RamaAnalysis = () => {
   // References for download functionality
