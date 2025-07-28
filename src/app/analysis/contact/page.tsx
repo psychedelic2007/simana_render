@@ -69,7 +69,7 @@ const ContactMapAnalysis = () => {
   useEffect(() => {
     const checkBackendStatus = async () => {
       try {
-        const response = await fetch('http://localhost:8000/');
+        const response = await fetch('https://simana.onrender.com');
         if (response.ok) {
           const data = await response.json();
           setIsBackendAvailable(true);
