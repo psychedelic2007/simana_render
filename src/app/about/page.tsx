@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Activity, BarChart3, FileText, Download, Cpu, Palette, Layers, Zap } from "lucide-react";
+import { SimpleFooterWithFourGrids } from "@/components/blocks/footers/simple-footer-with-four-grids";
 
 export default function AboutPage() {
   const fadeInUp = {
@@ -222,6 +223,7 @@ export default function AboutPage() {
           </motion.div>
         </motion.div>
       </section>
+      <SimpleFooterWithFourGrids />
     </div>
   );
 }
