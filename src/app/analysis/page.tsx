@@ -18,6 +18,7 @@ import {
   GitMerge
 } from 'lucide-react';
 import Link from 'next/link';
+import { SimpleFooterWithFourGrids } from "@/components/blocks/footers/simple-footer-with-four-grids";
 
 interface AnalysisModule {
   id: string;
@@ -258,6 +259,7 @@ export default function AnalysisPage() {
           </motion.button>
         </motion.div>
       </div>
+      <SimpleFooterWithFourGrids />
     </div>
   );
 }
